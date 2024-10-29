@@ -1,0 +1,234 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-dark {
+    background-color: #34495e;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-dark:hover {
+    background-color: #1e6bb8;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.4rem;
+    color: #3498db;
+}
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-radius: 5px;
+}
+.news-item {
+    background-color: #fff;
+    border-radius: 45px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+    border-top: 5px solid #1e6bb8;
+    position: relative;
+}
+
+.news-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.news-item .content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-item h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.news-item p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.news-item .author, 
+.news-item .date {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    margin-bottom: 8px;
+}
+
+.news-item .read-more {
+    display: inline-block;
+    background-color: #1e6bb8;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-item .read-more:hover {
+    background-color: #1473e6;
+}
+
+.news-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Layout Adjustments */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.col-md-4 {
+    flex: 0 0 calc(33.333% - 20px);
+    margin-bottom: 30px;
+}
+
+/* Button Navigation */
+.container .d-flex {
+    margin-top: 30px;
+}
+
+.container .d-flex button {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.container .d-flex button:disabled {
+    background-color: #bdc3c7;
+}
+
+.container .d-flex button:hover:not(:disabled) {
+    background-color: #1e6bb8;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer.css */
+
+footer {
+    background-color: #343a40; /* Dark background color */
+    color: #ffffff; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 20px 0; /* Vertical padding */
+    position: relative; /* Relative positioning for possible absolute child elements */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+}
+
+footer h5 {
+    margin-bottom: 15px; /* Space below the heading */
+    font-weight: bold; /* Make the heading bold */
+}
+
+footer p {
+    margin: 5px 0; /* Space between paragraphs */
+}
+
+footer a {
+    color: #ffffff; /* White color for links */
+    text-decoration: none; /* No underline on links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}
+footer .News{
+    margin-right: 82%;
+}
+/* 
+footer .icon{
+    margin-left: 82%;
+}
+footer .icon2{
+    margin-left: 89%;
+} */
+
+/* Media query for responsiveness */
+@media (max-width: 576px) {
+    footer h5 {
+        font-size: 1.2rem; /* Adjust heading size for small screens */
+    }
+
+    footer p {
+        font-size: 0.9rem; /* Adjust paragraph size for small screens */
+    }
+}
+
+  
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
+    
+    .news-item img {
+        height: 180px;
+    }
+}

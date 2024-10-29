@@ -3,6 +3,10 @@ import Navbar from './Components/Navbar';
 import News from './Components/News';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
+import Footer from './Components/Footer';
+import NotFound from './Components/NotFound';
+import Privacy from './Components/Privacy';
+import Terms from './Components/Terms';
 
 const App = () => {
   const [progress, setProgress] = useState(0);
@@ -14,7 +18,7 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter basename='/NewsApp'>
+      <BrowserRouter>
         <LoadingBar
           color='#f11946'
           progress={progress}
@@ -23,7 +27,7 @@ const App = () => {
         <Navbar />
         <div>
           <Routes>
-            <Route path='/NewsApp' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="general" />} />
+            <Route path='/' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="general" />} />
             <Route path='/foryou' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="general" />} />
             <Route path='/business' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="business" />} />
             <Route path='/entertainment' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="entertainment" />} />
@@ -32,8 +36,12 @@ const App = () => {
             <Route path='/science' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="science" />} />
             <Route path='/sports' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="sports" />} />
             <Route path='/technology' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="technology" />} />
+            <Route path='/privacy' element={<Privacy />} />
+            <Route path='/terms' element={<Terms />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </>
   );
