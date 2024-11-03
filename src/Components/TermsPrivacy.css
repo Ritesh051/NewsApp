@@ -30,6 +30,14 @@
     line-height: 1.8;
     margin-bottom: 20px;
   }
+  .icon {
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: #adadac98; 
+}
+
   
   @media (max-width: 768px) {
     .terms-privacy-container {

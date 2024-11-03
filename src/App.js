@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
 import News from './Components/News';
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import Footer from './Components/Footer';
 import NotFound from './Components/NotFound';
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <LoadingBar
           color='#f11946'
           progress={progress}
@@ -42,7 +42,7 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };

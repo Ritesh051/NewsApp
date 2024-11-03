@@ -21,16 +21,16 @@ const Footer = () => {
                     <h3 className="mb-3">Contact Us</h3>
                     <div className="d-flex justify-content-center">
                         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-white me-3">
-                            <i className="fa-brands fa-facebook"></i>
+                            <i className="icon fa-brands fa-facebook"></i>
                         </a>
                         <a href="https://x.com/?lang=en" target="_blank" rel="noopener noreferrer" className="text-white me-3">
-                            <i className="fa-brands fa-x-twitter"></i>
+                            <i className=" icon fa-brands fa-x-twitter"></i>
                         </a>
                         <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer" className="text-white me-3">
-                            <i className="fa-solid fa-envelope"></i>
+                            <i className="icon fa-solid fa-envelope"></i>
                         </a>
                         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-white">
-                            <i className="fa-brands fa-instagram"></i>
+                            <i className="icon fa-brands fa-instagram"></i>
                         </a>
                     </div>
                 </div>
