@@ -17,7 +17,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date }) => {
                 />
                 <div className="card-body">
                     <h5 className="card-title">
-                        {title ? `${title}.....` : "No title available"}
+                        {title ? `${title}....` : "No title available"}
                     </h5>
                     <p className="card-text">
                         <small className="text-body-secondary">

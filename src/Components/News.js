@@ -81,7 +81,7 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
           {articles.map((article, index) => (
             <div className="col-md-4" key={index}>
               <NewsItem
-                title={article.title ? article.title.slice(0, 35) : ""}
+                title={article.title ? article.title.slice(0, 45) : ""}
                 description={article.description ? article.description.slice(0, 85) : ""}
                 imageUrl={article.urlToImage}
                 newsUrl={article.url}
