@@ -3,6 +3,7 @@
   "homepage": "https://github.com/Ritesh051/NewsApp",
   "version": "0.1.0",
   "private": false,
+  "proxy" : "https://localhost:3000/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
