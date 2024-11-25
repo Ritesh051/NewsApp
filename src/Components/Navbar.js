@@ -40,7 +40,7 @@ const Navbar = () => {
                             <NavLink className="nav-link mx-3" to="/technology">Technology</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link mx-3" to="/technology">Tesla</NavLink>
+                            <NavLink className="nav-link mx-3" to="/tesla">Tesla</NavLink>
                         </li>
                     </ul>
                 </div>

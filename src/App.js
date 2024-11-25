@@ -36,6 +36,7 @@ const App = () => {
             <Route path='/science' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="science" />} />
             <Route path='/sports' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="sports" />} />
             <Route path='/technology' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="technology" />} />
+            <Route path='/tesla' element={<News setProgress={setProgress} apikey={apikey} pageSize={9} category="tesla" />} />
             <Route path='/privacy' element={<Privacy />} />
             <Route path='/terms' element={<Terms />} />
             <Route path='*' element={<NotFound />} />
