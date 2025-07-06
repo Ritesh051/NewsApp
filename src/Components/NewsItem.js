@@ -28,7 +28,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date }) => {
                     <a
                         rel="noreferrer"
                         href={newsUrl}
-                        target="_blank"
+                        target="blank"
                         className="btn btn-sm btn-dark"
                     >
                         Read more

@@ -12,7 +12,6 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
   const [totalResults, setTotalResults] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
-  // Function to fetch news data
   const fetchNews = useCallback(async () => {
     setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`;
@@ -22,18 +21,16 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
       let data = await fetch(url);
       let parsedData = await data.json();
 
-      // Check if parsedData.articles exists and is an array
       if (parsedData.articles && Array.isArray(parsedData.articles)) {
         setArticles((prevArticles) => [...prevArticles, ...parsedData.articles]);
         setTotalResults(parsedData.totalResults);
 
-        // Stop fetching if fewer articles than pageSize are returned
         if (parsedData.articles.length < pageSize) {
           setHasMore(false);
         }
       } else {
         console.error("Invalid API response format:", parsedData);
-        setHasMore(false); // Stop fetching if no articles are present
+        setHasMore(false);
       }
 
       setLoading(false);
@@ -41,25 +38,22 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
     } catch (error) {
       console.error("Error fetching news:", error);
       setLoading(false);
-      setHasMore(false); // Stop fetching on error
+      setHasMore(false);
     }
   }, [category, page, pageSize, setProgress, apikey]);
 
-  // Fetch news when component mounts or category changes
   useEffect(() => {
     setArticles([]); 
     setPage(1); 
     setHasMore(true); 
   }, [category]);
 
-  // Fetch news when the page or category changes
   useEffect(() => {
-    fetchNews(); // Fetch the news when page or category changes
+    fetchNews(); 
   }, [fetchNews]);
 
-  // Fetch more news for infinite scrolling
   const fetchMoreData = () => {
-    if (hasMore && !loading) { // Only update page if more articles are available and not currently loading
+    if (hasMore && !loading) { 
       setPage((prevPage) => prevPage + 1);
     }
   };
@@ -70,12 +64,11 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
         NewsAir - Top {category.charAt(0).toUpperCase() + category.slice(1)} Headlines
       </h1>
 
-      {/* Infinite scroll implementation */}
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={loading && <Spinner />} // Show loader when loading
+        loader={loading && <Spinner />} 
       >
         <div className="row">
           {articles.map((article, index) => (
@@ -93,7 +86,6 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
         </div>
       </InfiniteScroll>
 
-      {/* Message when no news articles are available */}
       {!loading && articles.length === 0 && (
         <p className="text-center">No news articles available.</p>
       )}
@@ -101,7 +93,6 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
   );
 };
 
-// PropTypes to define the props' types
 News.propTypes = {
   pageSize: PropTypes.number,
   category: PropTypes.string,

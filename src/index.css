@@ -131,7 +131,7 @@ h1 {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Layout Adjustments */
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -144,7 +144,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Button Navigation */
 .container .d-flex {
     margin-top: 30px;
 }
@@ -172,31 +171,31 @@ h1 {
 /* Footer.css */
 
 footer {
-    background-color: #343a40; /* Dark background color */
-    color: #ffffff; /* White text color */
-    text-align: center; /* Center align text */
-    padding: 20px 0; /* Vertical padding */
-    position: relative; /* Relative positioning for possible absolute child elements */
-    bottom: 0; /* Stick to the bottom */
-    width: 100%; /* Full width */
+    background-color: #343a40; 
+    color: #ffffff; 
+    text-align: center; 
+    padding: 20px 0; 
+    position: relative; 
+    bottom: 0;
+    width: 100%;
 }
 
 footer h5 {
-    margin-bottom: 15px; /* Space below the heading */
-    font-weight: bold; /* Make the heading bold */
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 footer p {
-    margin: 5px 0; /* Space between paragraphs */
+    margin: 5px 0;
 }
 
 footer a {
-    color: #ffffff; /* White color for links */
-    text-decoration: none; /* No underline on links */
+    color: #ffffff;
+    text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline; /* Underline on hover for links */
+    text-decoration: underline;
 }
 footer .News{
     margin-right: 82%;
@@ -209,19 +208,17 @@ footer .icon2{
     margin-left: 89%;
 } */
 
-/* Media query for responsiveness */
 @media (max-width: 576px) {
     footer h5 {
-        font-size: 1.2rem; /* Adjust heading size for small screens */
+        font-size: 1.2rem;
     }
 
     footer p {
-        font-size: 0.9rem; /* Adjust paragraph size for small screens */
+        font-size: 0.9rem;
     }
 }
 
-  
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .col-md-4 {
         flex: 0 0 100%;
