@@ -8,7 +8,6 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  // eslint-disable-next-line
   const [totalResults, setTotalResults] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
@@ -18,11 +17,17 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
     setLoading(true);
 
     try {
+      console.log("Fetching news for category:", category, "page:", page);
+      console.log("URL:", url);
+
       let data = await fetch(url);
       let parsedData = await data.json();
 
       if (parsedData.articles && Array.isArray(parsedData.articles)) {
-        setArticles((prevArticles) => [...prevArticles, ...parsedData.articles]);
+        setArticles((prevArticles) => {
+          console.log("Fetched articles:", parsedData.articles.length);
+          return [...prevArticles, ...parsedData.articles];
+        });
         setTotalResults(parsedData.totalResults);
 
         if (parsedData.articles.length < pageSize) {
@@ -40,20 +45,20 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
       setLoading(false);
       setHasMore(false);
     }
-  }, [category, page, pageSize, setProgress, apikey]);
+  }, [category, pageSize, setProgress, apikey]);  // removed page here
 
   useEffect(() => {
-    setArticles([]); 
-    setPage(1); 
-    setHasMore(true); 
+    setArticles([]);
+    setPage(1);
+    setHasMore(true);
   }, [category]);
 
   useEffect(() => {
-    fetchNews(); 
-  }, [fetchNews]);
+    fetchNews();
+  }, [fetchNews, page]);  // added page here
 
   const fetchMoreData = () => {
-    if (hasMore && !loading) { 
+    if (hasMore && !loading) {
       setPage((prevPage) => prevPage + 1);
     }
   };
@@ -68,7 +73,7 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
         dataLength={articles.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={loading && <Spinner />} 
+        loader={loading && <Spinner />}
       >
         <div className="row">
           {articles.map((article, index) => (
