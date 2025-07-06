@@ -4,7 +4,7 @@ import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import PropTypes from 'prop-types';
 
-const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
+const News = ({ pageSize = 5, category = 'general', setProgress }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -13,21 +13,16 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
 
   const fetchNews = useCallback(async () => {
     setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`;
+    const url = `/api/news?category=${category}&page=${page}&pageSize=${pageSize}`;
+
     setLoading(true);
 
     try {
-      console.log("Fetching news for category:", category, "page:", page);
-      console.log("URL:", url);
-
       let data = await fetch(url);
       let parsedData = await data.json();
 
       if (parsedData.articles && Array.isArray(parsedData.articles)) {
-        setArticles((prevArticles) => {
-          console.log("Fetched articles:", parsedData.articles.length);
-          return [...prevArticles, ...parsedData.articles];
-        });
+        setArticles((prevArticles) => [...prevArticles, ...parsedData.articles]);
         setTotalResults(parsedData.totalResults);
 
         if (parsedData.articles.length < pageSize) {
@@ -45,7 +40,7 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
       setLoading(false);
       setHasMore(false);
     }
-  }, [category, pageSize, setProgress, apikey]);  // removed page here
+  }, [category, page, pageSize, setProgress]); // ✅ removed apikey
 
   useEffect(() => {
     setArticles([]);
@@ -55,7 +50,7 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
 
   useEffect(() => {
     fetchNews();
-  }, [fetchNews, page]);  // added page here
+  }, [fetchNews]);
 
   const fetchMoreData = () => {
     if (hasMore && !loading) {
@@ -102,7 +97,6 @@ News.propTypes = {
   pageSize: PropTypes.number,
   category: PropTypes.string,
   setProgress: PropTypes.func.isRequired,
-  apikey: PropTypes.string.isRequired,
 };
 
 export default News;
