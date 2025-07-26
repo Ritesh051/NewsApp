@@ -8,7 +8,6 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [totalResults, setTotalResults] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
   const fetchNews = useCallback(async () => {
@@ -20,15 +19,14 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
       console.log("Fetching news for category:", category, "page:", page);
       console.log("URL:", url);
 
-      let data = await fetch(url);
-      let parsedData = await data.json();
+      const data = await fetch(url);
+      const parsedData = await data.json();
 
       if (parsedData.articles && Array.isArray(parsedData.articles)) {
-        setArticles((prevArticles) => {
-          console.log("Fetched articles:", parsedData.articles.length);
-          return [...prevArticles, ...parsedData.articles];
-        });
-        setTotalResults(parsedData.totalResults);
+        setArticles((prevArticles) => [
+          ...prevArticles,
+          ...parsedData.articles,
+        ]);
 
         if (parsedData.articles.length < pageSize) {
           setHasMore(false);
@@ -45,7 +43,7 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
       setLoading(false);
       setHasMore(false);
     }
-  }, [category, pageSize, setProgress, apikey]);  // removed page here
+  }, [category, pageSize, setProgress, apikey, page]); // ✅ page included
 
   useEffect(() => {
     setArticles([]);
@@ -55,7 +53,7 @@ const News = ({ pageSize = 5, category = 'general', setProgress, apikey }) => {
 
   useEffect(() => {
     fetchNews();
-  }, [fetchNews, page]);  // added page here
+  }, [fetchNews, page]);
 
   const fetchMoreData = () => {
     if (hasMore && !loading) {
